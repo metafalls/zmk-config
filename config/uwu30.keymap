@@ -11,59 +11,155 @@
     combos {
         compatible = "zmk,combos";
 
-        combo_mo1 {
+        qd_escp {
             timeout-ms = <100>;
-            key-positions = <1 2>;
-            bindings = <&mo 1>;
+            key-positions = <1 0>;
+            bindings = <&kp ESC>;
+            layers = <0>;
         };
 
-        combo_mo2 {
+        oi_quot {
             timeout-ms = <100>;
-            key-positions = <28 29>;
-            bindings = <&mo 2>;
+            key-positions = <18 19>;
+            bindings = <&as SINGLE_QUOTE>;
+            layers = <0>;
+        };
+
+        pbs_scln {
+            bindings = <&as SEMICOLON>;
+            key-positions = <8 9>;
+            layers = <0>;
+        };
+
+        zx_delt {
+            bindings = <&kp DELETE>;
+            key-positions = <20 21>;
+            layers = <0>;
+        };
+
+        vk_entr {
+            bindings = <&kp ENTER>;
+            key-positions = <24 25>;
+            layers = <0>;
+        };
+
+        qh_pscr {
+            bindings = <&kp PRINTSCREEN>;
+            key-positions = <0 12>;
+            layers = <0>;
         };
     };
 };
 
-&mt { tapping-term-ms = <400>; };
+&mt { tapping-term-ms = <170>; };
 
 / {
+    macros {
+        shift: with_lshift {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings =
+                <&macro_press>,
+                <&kp LSHFT>,
+                <&macro_tap>,
+                <&macro_param_1to1 &kp MACRO_PLACEHOLDER>,
+                <&macro_release>,
+                <&kp LSHFT>;
+
+            label = "SHIFTKEY_PRESS_WITH_LEFT_SHIFT_MODIFIER";
+        };
+
+        as: autoshift {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings =
+                <&macro_press>,
+                <&macro_param_1to1 &macro_param_1to2 &as_ht MACRO_PLACEHOLDER MACRO_PLACEHOLDER>,
+                <&macro_pause_for_release>,
+                <&macro_release>,
+                <&macro_param_1to1 &macro_param_1to2 &as_ht MACRO_PLACEHOLDER MACRO_PLACEHOLDER>;
+
+            label = "AUTOSHIFT_KEYPRESS";
+        };
+    };
+
+    behaviors {
+        as_ht: autoshift_hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "AUTOSHIFT_HOLD_TAP";
+            bindings = <&shift>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <160>;
+        };
+
+        hrm_g: homerow_gui {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_GUI";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <250>;
+            hold-trigger-key-positions = <19 10>;
+        };
+
+        hrm_a: homerow_alt {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_ALT";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <220>;
+            hold-trigger-key-positions = <11 18 21 28>;
+        };
+
+        hrm_s: homerow_shift {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_SHIFT";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <140>;
+            hold-trigger-key-positions = <12 17>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-&kp Q                 &kp D           &kp R        &kp W        &kp B        &kp J        &kp F        &kp U        &kp P            &kp BACKSPACE
-&mt LGUI A            &mt RALT S      &mt LSHFT H  &mt LCTRL T  &kp G        &kp Y        &mt RCTRL N  &mt RSHFT E  &mt RALT O       &kp I
-&kp Z                 &mt LEFT_ALT X  &kp M        &kp C        &kp V        &kp K        &kp L        &kp COMMA    &mt LALT PERIOD  &kp SLASH
-&kp LEFT_PARENTHESIS                  &kp TAB      &lt 1 SPACE  &lt 1 SPACE  &lt 2 SPACE               &kp TAB                       &kp RIGHT_PARENTHESIS
+&kp Q                 &kp D              &kp R           &kp W        &kp B        &kp J        &kp F        &kp U           &kp P               &kp BACKSPACE
+&hrm_g LGUI A         &hrm_a RALT S      &hrm_s LSHFT H  &mt LCTRL T  &kp G        &kp Y        &mt RCTRL N  &hrm_s RSHFT E  &hrm_a RALT O       &hrm_g RGUI I
+&kp Z                 &hrm_a LEFT_ALT X  &kp M           &lt 3 C      &kp V        &kp K        &kp L        &as COMMA       &hrm_a LALT PERIOD  &as SLASH
+&kp LEFT_PARENTHESIS                     &kp TAB         &lt 1 SPACE  &lt 1 SPACE  &lt 2 SPACE               &kp TAB                             &kp RIGHT_PARENTHESIS
             >;
         };
 
         nav_layer {
             bindings = <
-&kp ESC  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans   &kp BSPC
-&trans   &trans  &trans  &trans  &trans  &trans  &trans  &kp SEMI  &kp SQT  &trans
-&trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans   &mo 2
-&trans           &trans  &trans  &trans  &trans          &trans             &trans
+&kp F1            &kp F2    &kp F3    &kp F4            &kp F5    &kp F6    &kp F7    &kp F8    &kp F9        &kp F10
+&trans            &trans    &trans    &trans            &kp F11   &kp F12   &kp LEFT  &kp DOWN  &kp UP_ARROW  &kp RIGHT
+&as SINGLE_QUOTE  &kp BSLH  &kp LBRC  &kp LEFT_BRACKET  &kp LPAR  &kp RPAR  &kp RBKT  &kp RBRC  &kp PIPE      &trans
+&trans                      &trans    &trans            &trans    &trans              &trans                  &trans
             >;
         };
 
         symbol_layer {
             bindings = <
-&kp N1     &kp N2     &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0
-&kp MINUS  &kp EQUAL  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans                &trans  &trans  &trans  &trans          &trans          &trans
+&as N1  &as N2        &as N3     &as N4     &as GRAVE        &kp PG_UP  &kp HOME  &kp INS  &kp PAUSE_BREAK  &trans
+&as N5  &as NUMBER_6  &as N7     &as N8     &kp CAPS         &kp PG_DN  &trans    &trans   &trans           &trans
+&as N9  &as N0        &as MINUS  &as EQUAL  &kp PRINTSCREEN  &trans     &kp END   &trans   &trans           &trans
+&trans                &trans     &trans     &trans           &trans               &trans                    &trans
             >;
         };
 
         f_layer {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans          &trans  &trans  &trans  &trans          &trans          &trans
+&trans    &trans          &kp C_VOL_DN  &kp C_PLAY_PAUSE  &kp C_VOLUME_UP  &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &trans  &trans
+&kp LEFT  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT         &kp KP_NUMLOCK   &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &trans  &trans
+&trans    &kp LEFT_ALT    &trans        &trans            &trans           &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &trans  &trans
+&trans                    &trans        &trans            &trans           &kp KP_NUMBER_0                   &trans                   &trans
             >;
         };
     };
