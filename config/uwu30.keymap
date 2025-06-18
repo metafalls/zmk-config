@@ -51,7 +51,10 @@
     };
 };
 
-&mt { tapping-term-ms = <170>; };
+&mt {
+    tapping-term-ms = <170>;
+    flavor = "balanced";
+};
 
 / {
     macros {
@@ -90,7 +93,8 @@
             bindings = <&shift>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <160>;
+            tapping-term-ms = <170>;
+            flavor = "balanced";
         };
 
         hrm_g: homerow_gui {
@@ -101,6 +105,7 @@
             #binding-cells = <2>;
             tapping-term-ms = <250>;
             hold-trigger-key-positions = <19 10>;
+            flavor = "balanced";
         };
 
         hrm_a: homerow_alt {
@@ -111,6 +116,7 @@
             #binding-cells = <2>;
             tapping-term-ms = <220>;
             hold-trigger-key-positions = <11 18 21 28>;
+            flavor = "balanced";
         };
 
         hrm_s: homerow_shift {
@@ -121,6 +127,7 @@
             #binding-cells = <2>;
             tapping-term-ms = <140>;
             hold-trigger-key-positions = <12 17>;
+            flavor = "balanced";
         };
     };
 
