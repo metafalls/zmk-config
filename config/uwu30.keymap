@@ -104,8 +104,8 @@
 
             #binding-cells = <2>;
             tapping-term-ms = <250>;
-            hold-trigger-key-positions = <19 10>;
-            flavor = "tap-unless-interrupted";
+            hold-trigger-key-positions = <19 10 11 12 13 16 17 18 21 28>;
+            flavor = "balanced";
         };
 
         hrm_a: homerow_alt {
@@ -115,7 +115,8 @@
 
             #binding-cells = <2>;
             tapping-term-ms = <220>;
-            flavor = "tap-unless-interrupted";
+            flavor = "balanced";
+            hold-trigger-key-positions = <10 11 12 13 16 17 18 19 28 21>;
         };
 
         hrm_s: homerow_shift {
@@ -125,7 +126,8 @@
 
             #binding-cells = <2>;
             tapping-term-ms = <140>;
-            flavor = "tap-unless-interrupted";
+            flavor = "balanced";
+            hold-trigger-key-positions = <10 11 12 13 16 17 18 19 28 21>;
         };
 
         hrm_c: homerow_control {
@@ -135,7 +137,8 @@
 
             #binding-cells = <2>;
             tapping-term-ms = <170>;
-            flavor = "tap-unless-interrupted";
+            flavor = "balanced";
+            hold-trigger-key-positions = <10 11 12 13 16 17 18 19 28 21>;
         };
     };
 
