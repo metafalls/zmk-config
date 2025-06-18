@@ -106,6 +106,7 @@
             tapping-term-ms = <250>;
             hold-trigger-key-positions = <11 12 13 16 17 18 21 28>;
             flavor = "hold-preferred";
+            require-prior-idle-ms = <100>;
         };
 
         hrm_a: homerow_alt {
@@ -117,6 +118,7 @@
             tapping-term-ms = <220>;
             flavor = "hold-preferred";
             hold-trigger-key-positions = <10 12 13 16 17 19>;
+            require-prior-idle-ms = <100>;
         };
 
         hrm_s: homerow_shift {
@@ -128,6 +130,7 @@
             tapping-term-ms = <140>;
             flavor = "hold-preferred";
             hold-trigger-key-positions = <10 11 13 16 18 19 28 21>;
+            require-prior-idle-ms = <100>;
         };
 
         hrm_c: homerow_control {
@@ -139,6 +142,7 @@
             tapping-term-ms = <170>;
             flavor = "hold-preferred";
             hold-trigger-key-positions = <10 11 12 17 18 19 28 21>;
+            require-prior-idle-ms = <100>;
         };
     };
 
