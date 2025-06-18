@@ -21,12 +21,12 @@
         oi_quot {
             timeout-ms = <100>;
             key-positions = <18 19>;
-            bindings = <&as SINGLE_QUOTE>;
+            bindings = <&mt DOUBLE_QUOTES SINGLE_QUOTE>;
             layers = <0>;
         };
 
         pbs_scln {
-            bindings = <&as SEMICOLON>;
+            bindings = <&mt COLON SEMI>;
             key-positions = <8 9>;
             layers = <0>;
         };
@@ -136,28 +136,28 @@
 
         default_layer {
             bindings = <
-&kp Q                 &kp D              &kp R           &kp W        &kp B        &kp J        &kp F        &kp U           &kp P               &kp BACKSPACE
-&hrm_g LGUI A         &hrm_a RALT S      &hrm_s LSHFT H  &mt LCTRL T  &kp G        &kp Y        &mt RCTRL N  &hrm_s RSHFT E  &hrm_a RALT O       &hrm_g RGUI I
-&kp Z                 &hrm_a LEFT_ALT X  &kp M           &lt 3 C      &kp V        &kp K        &kp L        &as COMMA       &hrm_a LALT PERIOD  &as SLASH
-&kp LEFT_PARENTHESIS                     &kp TAB         &lt 1 SPACE  &lt 1 SPACE  &lt 2 SPACE               &kp TAB                             &kp RIGHT_PARENTHESIS
+&kp Q                 &kp D              &kp R           &kp W        &kp B        &kp J        &kp F        &kp U                &kp P               &kp BACKSPACE
+&hrm_g LGUI A         &hrm_a RALT S      &hrm_s LSHFT H  &mt LCTRL T  &kp G        &kp Y        &mt RCTRL N  &hrm_s RSHFT E       &hrm_a RALT O       &hrm_g RGUI I
+&kp Z                 &hrm_a LEFT_ALT X  &kp M           &lt 3 C      &kp V        &kp K        &kp L        &mt LESS_THAN COMMA  &hrm_a LALT PERIOD  &mt QUESTION SLASH
+&kp LEFT_PARENTHESIS                     &kp TAB         &lt 1 SPACE  &lt 1 SPACE  &lt 2 SPACE               &kp TAB                                  &kp RIGHT_PARENTHESIS
             >;
         };
 
         nav_layer {
             bindings = <
-&kp F1            &kp F2    &kp F3    &kp F4            &kp F5    &kp F6    &kp F7    &kp F8    &kp F9        &kp F10
-&trans            &trans    &trans    &trans            &kp F11   &kp F12   &kp LEFT  &kp DOWN  &kp UP_ARROW  &kp RIGHT
-&as SINGLE_QUOTE  &kp BSLH  &kp LBRC  &kp LEFT_BRACKET  &kp LPAR  &kp RPAR  &kp RBKT  &kp RBRC  &kp PIPE      &trans
-&trans                      &trans    &trans            &trans    &trans              &trans                  &trans
+&kp F1                          &kp F2    &kp F3    &kp F4            &kp F5    &kp F6    &kp F7    &kp F8    &kp F9        &kp F10
+&trans                          &trans    &trans    &trans            &kp F11   &kp F12   &kp LEFT  &kp DOWN  &kp UP_ARROW  &kp RIGHT
+&mt DOUBLE_QUOTES SINGLE_QUOTE  &kp BSLH  &kp LBRC  &kp LEFT_BRACKET  &kp LPAR  &kp RPAR  &kp RBKT  &kp RBRC  &kp PIPE      &trans
+&trans                                    &trans    &trans            &trans    &trans              &trans                  &trans
             >;
         };
 
         symbol_layer {
             bindings = <
-&as N1  &as N2        &as N3     &as N4     &as GRAVE        &kp PG_UP  &kp HOME  &kp INS  &kp PAUSE_BREAK  &trans
-&as N5  &as NUMBER_6  &as N7     &as N8     &kp CAPS         &kp PG_DN  &trans    &trans   &trans           &trans
-&as N9  &as N0        &as MINUS  &as EQUAL  &kp PRINTSCREEN  &trans     &kp END   &trans   &trans           &trans
-&trans                &trans     &trans     &trans           &trans               &trans                    &trans
+&mt EXCL NUMBER_1  &mt AT NUMBER_2     &mt HASH NUMBER_3  &mt DOLLAR NUMBER_4  &mt TILDE GRAVE  &kp PG_UP  &kp HOME  &kp INS  &kp PAUSE_BREAK  &trans
+&mt PERCENT N5     &mt CARET NUMBER_6  &mt AMPS N7        &mt ASTRK N8         &kp CAPS         &kp PG_DN  &trans    &trans   &trans           &trans
+&mt LPAR N9        &mt RPAR N0         &mt UNDER MINUS    &mt PLUS EQUAL       &kp PRINTSCREEN  &trans     &kp END   &trans   &trans           &trans
+&trans                                 &trans             &trans               &trans           &trans               &trans                    &trans
             >;
         };
 
