@@ -105,7 +105,7 @@
             #binding-cells = <2>;
             tapping-term-ms = <250>;
             hold-trigger-key-positions = <19 10>;
-            flavor = "balanced";
+            flavor = "tap-unless-interrupted";
         };
 
         hrm_a: homerow_alt {
@@ -115,8 +115,7 @@
 
             #binding-cells = <2>;
             tapping-term-ms = <220>;
-            hold-trigger-key-positions = <11 18 21 28>;
-            flavor = "balanced";
+            flavor = "tap-unless-interrupted";
         };
 
         hrm_s: homerow_shift {
@@ -126,8 +125,17 @@
 
             #binding-cells = <2>;
             tapping-term-ms = <140>;
-            hold-trigger-key-positions = <12 17>;
-            flavor = "balanced";
+            flavor = "tap-unless-interrupted";
+        };
+
+        hrm_c: homerow_control {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_CONTROL";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <170>;
+            flavor = "tap-unless-interrupted";
         };
     };
 
@@ -136,10 +144,10 @@
 
         default_layer {
             bindings = <
-&kp Q                 &kp D              &kp R           &kp W        &kp B        &kp J        &kp F        &kp U                &kp P               &kp BACKSPACE
-&hrm_g LGUI A         &hrm_a RALT S      &hrm_s LSHFT H  &mt LCTRL T  &kp G        &kp Y        &mt RCTRL N  &hrm_s RSHFT E       &hrm_a RALT O       &hrm_g RGUI I
-&kp Z                 &hrm_a LEFT_ALT X  &kp M           &lt 3 C      &kp V        &kp K        &kp L        &mt LESS_THAN COMMA  &hrm_a LALT PERIOD  &mt QUESTION SLASH
-&kp LEFT_PARENTHESIS                     &kp TAB         &lt 1 SPACE  &lt 1 SPACE  &lt 2 SPACE               &kp TAB                                  &kp RIGHT_PARENTHESIS
+&kp Q                 &kp D              &kp R           &kp W           &kp B        &kp J        &kp F           &kp U                &kp P               &kp BACKSPACE
+&hrm_g LGUI A         &hrm_a RALT S      &hrm_s LSHFT H  &hrm_c LCTRL T  &kp G        &kp Y        &hrm_c RCTRL N  &hrm_s RSHFT E       &hrm_a RALT O       &hrm_g RGUI I
+&kp Z                 &hrm_a LEFT_ALT X  &kp M           &lt 3 C         &kp V        &kp K        &kp L           &mt LESS_THAN COMMA  &hrm_a LALT PERIOD  &mt QUESTION SLASH
+&kp LEFT_PARENTHESIS                     &kp TAB         &lt 1 SPACE     &lt 1 SPACE  &lt 2 SPACE                  &kp TAB                                  &kp RIGHT_PARENTHESIS
             >;
         };
 
