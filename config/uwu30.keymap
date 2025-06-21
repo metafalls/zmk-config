@@ -107,6 +107,7 @@
             hold-trigger-key-positions = <11 12 13 16 17 18 21 28>;
             flavor = "balanced";
             require-prior-idle-ms = <100>;
+            hold-trigger-on-release;
         };
 
         hrm_a: homerow_alt {
@@ -119,6 +120,7 @@
             flavor = "balanced";
             hold-trigger-key-positions = <10 12 13 16 17 19>;
             require-prior-idle-ms = <100>;
+            hold-trigger-on-release;
         };
 
         hrm_s: homerow_shift {
@@ -131,6 +133,7 @@
             flavor = "balanced";
             hold-trigger-key-positions = <10 11 13 16 18 19 28 21>;
             require-prior-idle-ms = <100>;
+            hold-trigger-on-release;
         };
 
         hrm_c: homerow_control {
@@ -143,6 +146,7 @@
             flavor = "balanced";
             hold-trigger-key-positions = <10 11 12 17 18 19 28 21>;
             require-prior-idle-ms = <100>;
+            hold-trigger-on-release;
         };
     };
 
@@ -151,10 +155,10 @@
 
         default_layer {
             bindings = <
-&kp Q                 &kp D           &kp R        &kp W        &kp B        &kp J        &kp F        &kp U                &kp P            &kp BACKSPACE
-&mt LGUI A            &mt RALT S      &mt LSHFT H  &mt LCTRL T  &kp G        &kp Y        &mt RCTRL N  &mt RSHFT E          &mt RALT O       &mt RGUI I
-&kp Z                 &mt LEFT_ALT X  &kp M        &lt 3 C      &kp V        &kp K        &kp L        &mt LESS_THAN COMMA  &mt LALT PERIOD  &mt QUESTION SLASH
-&kp LEFT_PARENTHESIS                  &kp TAB      &lt 1 SPACE  &lt 1 SPACE  &lt 2 SPACE               &kp TAB                               &kp RIGHT_PARENTHESIS
+&kp Q                 &kp D              &kp R           &kp W           &kp B        &kp J        &kp F           &kp U                &kp P               &kp BACKSPACE
+&hrm_g LGUI A         &hrm_a RALT S      &hrm_s LSHFT H  &hrm_c LCTRL T  &kp G        &kp Y        &hrm_c RCTRL N  &hrm_s RSHFT E       &hrm_a RALT O       &hrm_g RGUI I
+&kp Z                 &hrm_a LEFT_ALT X  &kp M           &lt 3 C         &kp V        &kp K        &kp L           &mt LESS_THAN COMMA  &hrm_a LALT PERIOD  &mt QUESTION SLASH
+&kp LEFT_PARENTHESIS                     &kp TAB         &lt 1 SPACE     &lt 1 SPACE  &lt 2 SPACE                  &kp TAB                                  &kp RIGHT_PARENTHESIS
             >;
         };
 
